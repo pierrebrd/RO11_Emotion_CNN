@@ -40,8 +40,16 @@ The dataset is already split into a train and test dataset, with 6 speakers in t
 This split means that the train and test datasets have different speakers, which is a good way to evaluate the generalization of our models.
 
 ## Spectrogram generation - Nathan Chandanson
-
+To use as inputs to our CNNs, we needed to first convert the audio files to spectrograms, which are 2D arrays of floating point values.
+To do so, we proceeded as follows:
+1. Load the audio with pytorch audio functions.
+2. We make the audio 3s, by either padding it with zeros if its too short or by truncating the end if it is too long.
+3. Finally, we compute the spectrogram still using pytorch functions. This spectrogram is computed as explained in the slides: sliding a 25ms window every 10ms.
+ 
 ### Results
+This gives us spectrograms that we can visualize:
+
+![spectrogram_example](docs/spectrogram_example.png)
 
 ## CNN from scratch - Rémi Moshfeghi
 The goal of this part is to build a CNN from scratch that takes a spectrogram as an input and outputs a prediction of the speaker's emotion.
@@ -51,7 +59,24 @@ The training process is presented in the `fromScratch_trainer.ipynb` file. First
 
 ### Results
 The model was trained over 50 epochs, but the weights were saved based on the epoch that gave the best accuracy on the test set. These weights yield a 100.0% accuracy on the train set, and a 81.4% accuracy on the test set which points at overfitting. We include the confusion matrix on the test set :
+
 ![fromscratch_confusion](docs/fromscratch_test_confusion_matrix.png)
+
+## Dilated CNN from scratch - Nathan Chandanson
+In this part, we tried to dilate the from scratch CNN, to see whether our custom CNN would benefit from a larger context.
+
+### Method
+The training process in `./fromScratch_dilated_training.ipynb` is based on the previous training process. The main difference is that for the 2D convolutions, the dilation parameter was set to 2 to give a broader point of view. Also, to accomodate the bigger context, we had to change the padding to 2.
+
+### Results
+As in the previous section, the model was trained over 50 epochs. 
+These weights yield a 100.0% accuracy on the train set, and a 76.6% accuracy on the test set. We note that the 100% accuracy for the train set probably indicates overfitting as in the "normal" from-scratch CNN. Also, we note that the dilation did decrease a bit the accuracy for the test dataset. Thus, this indicates that our application relies more on the thin details of the spectrogram rather than on the whole global picture.
+As the results were not better, we did not try to further increase the dilation size, as it led to slightly worse results.
+
+We include the confusion matrix on the test set, that is quite similar to the one obtained with the non-dilated CNN:
+
+![fromscratch_dilated_test_confusion](docs/fromscratch_dilated_test_confusion.png)
+
 
 
 ## Transfer learning with ResNet18 - Pierre Bordeau
