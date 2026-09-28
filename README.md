@@ -4,6 +4,12 @@
 
 To test the recording, spectrogram generation and CNN prediction, you can go on our "WebApp" that is a Google Colab notebook, [here](https://colab.research.google.com/drive/1cyjidaOfuTCavoaeDVHlS3_26hQDtFAd?usp=sharing).
 
+## Introduction
+
+This repo contains the code of our team for the CNN Emotion project of course 5RO11 at ENSTA.
+
+This README explains the methods we use to prepare the data (spectrogram generation, etc.), to prepare the CNN models we made, and it presents the results we obtained.
+
 - [RO11\_Emotion\_CNN](#ro11_emotion_cnn)
   - [Introduction](#introduction)
   - [Database used](#database-used)
@@ -22,12 +28,6 @@ To test the recording, spectrogram generation and CNN prediction, you can go on 
         - [Unweighted Average Recall (UAR) per class](#unweighted-average-recall-uar-per-class)
         - [Conclusion](#conclusion)
 
-
-## Introduction
-
-This repo contains the code of our team for the CNN Emotion project of course 5RO11 at ENSTA.
-
-This README explains the methods we use to prepare the data (spectrogram generation, etc.), to prepare the CNN models we made, and it presents the results we obtained.
 
 ## Database used
 
