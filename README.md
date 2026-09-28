@@ -44,10 +44,15 @@ This split means that the train and test datasets have different speakers, which
 ### Results
 
 ## CNN from scratch - Rémi Moshfeghi
+The goal of this part is to build a CNN from scratch that takes a spectrogram as an input and outputs a prediction of the speaker's emotion.
 
 ### Method
+The training process is presented in the `fromScratch_trainer.ipynb` file. First, a CNN architecture is defined. From a single channel 301x64px image (the spectrogram), we go to 32, then 64, then 128, then 256 channels, dividing the size of the image by four at each layer using a MaxPool operation. Each layer consists of a sequence that we repeat two times : a 3x3 convolution, a batch normalization and a ReLU activation. Each of the 256 channels is then averaged, and a final fully connected layer produces prediction for each of the seven emotions.
 
 ### Results
+The model was trained over 50 epochs, but the weights were saved based on the epoch that gave the best accuracy on the test set. These weights yield a 100.0% accuracy on the train set, and a 81.4% accuracy on the test set which points at overfitting. We include the confusion matrix on the test set :
+![fromscratch_confusion](docs/fromscratch_test_confusion_matrix.png)
+
 
 ## Transfer learning with ResNet18 - Pierre Bordeau
 
