@@ -4,6 +4,25 @@
 
 To test the recording, spectrogram generation and CNN prediction, you can go on our "WebApp" that is a Google Colab notebook, [here](https://colab.research.google.com/drive/1cyjidaOfuTCavoaeDVHlS3_26hQDtFAd?usp=sharing).
 
+- [RO11\_Emotion\_CNN](#ro11_emotion_cnn)
+  - [Introduction](#introduction)
+  - [Database used](#database-used)
+  - [Spectrogram generation - Nathan Chandanson](#spectrogram-generation---nathan-chandanson)
+    - [Results](#results)
+  - [CNN from scratch - Rémi Moshfeghi](#cnn-from-scratch---rémi-moshfeghi)
+    - [Method](#method)
+    - [Results](#results-1)
+  - [Transfer learning with ResNet18 - Pierre Bordeau](#transfer-learning-with-resnet18---pierre-bordeau)
+    - [Method](#method-1)
+      - [Data preparation](#data-preparation)
+      - [Model modification](#model-modification)
+      - [Training](#training)
+    - [Results](#results-2)
+        - [Confusion matrix](#confusion-matrix)
+        - [Unweighted Average Recall (UAR) per class](#unweighted-average-recall-uar-per-class)
+        - [Conclusion](#conclusion)
+
+
 ## Introduction
 
 This repo contains the code of our team for the CNN Emotion project of course 5RO11 at ENSTA.
@@ -83,6 +102,6 @@ Here are the results we obtained at the end of the training:
 
 ![uar resnet](docs/uar_resnet.png)
 
-##### Conclusion :
+##### Conclusion
 
 The results are not perfect, but they match the results obtained by the U2IS team for the FineTuned ResNet18 model
